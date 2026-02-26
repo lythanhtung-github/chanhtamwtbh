@@ -1,0 +1,145 @@
+:root {
+    --primary-blue: #2563eb;
+    --light-blue: #eff6ff;
+}
+
+body {
+    background-color: var(--light-blue);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-line {
+    position: absolute;
+    left: 7px;
+    top: 10px;
+    bottom: 0;
+    width: 2px;
+    background-color: #dbeafe;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    background-color: var(--primary-blue);
+    border-radius: 50%;
+    border: 3px solid white;
+    z-index: 20;
+    box-shadow: 0 0 0 1px #dbeafe;
+}
+
+/* Floating Icons Effect */
+.floating-icons-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.float-icon {
+    position: absolute;
+    bottom: -50px;
+    opacity: 0;
+    color: rgba(37, 99, 235, 0.2);
+    animation: floatUp var(--duration) linear infinite;
+    font-size: var(--size);
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.4;
+    }
+
+    90% {
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.music-player-container {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 160px;
+}
+
+.music-btn-main {
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: var(--primary-blue);
+    color: white;
+    border-radius: 9999px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.spinning {
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.aspect-rectangle {
+    aspect-ratio: 16 / 10;
+}
+
+#track-name {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: center;
+}
