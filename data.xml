@@ -2,17 +2,33 @@
 <root>
     <!-- Danh sách ảnh hiển thị ở tab Bộ Sưu Tập -->
     <gallery>
+        <image>/2026/20260301_3.JPG</image>
+        <image>/2026/20260301_4.JPG</image>
+        <image>/2026/20260301_2.JPG</image>
+        <image>/2026/20260301_1.JPG</image>
         <image>/2026/20260226_1.jpg</image>
         <image>/2026/20260226_2.jpg</image>
         <image>/2026/20260226_3.jpg</image>
-        <image >/2017/20170813_1.jpg</image>
-        <image >/2017/20170813_2.jpg</image>
-        <image >/2017/20170813_3.jpg</image>
+        <image>/2017/20170813_1.jpg</image>
+        <image>/2017/20170813_2.jpg</image>
+        <image>/2017/20170813_3.jpg</image>
     </gallery>
 
     <!-- Danh sách các cột mốc ở tab Dòng Thời Gian -->
     <timeline>
-        <!-- Sự kiện có 3 ảnh (hiển thị lưới 3 cột) -->
+
+        <item>
+            <date>01/03/2026</date>
+            <title>Phóng sanh cầu an đầu năm 2026</title>
+            <description></description>
+            <images>
+                <img>/2026/20260301_1.JPG</img>
+                <img>/2026/20260301_2.JPG</img>
+                <img>/2026/20260301_3.JPG</img>
+                <img>/2026/20260301_4.JPG</img>
+            </images>
+        </item>
+
         <item>
             <date>26/02/2026</date>
             <title>Kỵ thân phụ Sư phụ</title>
@@ -21,6 +37,8 @@
                 <img>/2026/20260226_1.jpg</img>
                 <img>/2026/20260226_2.jpg</img>
                 <img>/2026/20260226_3.jpg</img>
+                <img>/2026/20260226_4.jpg</img>
+                <img>/2026/20260226_5.jpg</img>
             </images>
         </item>
 
@@ -30,7 +48,7 @@
             <title>Khóa tu "Nuôi dưỡng duyên lành"</title>
             <description>Ban kỹ thuật</description>
             <images>
-                <img>sapa_mountain.jpg</img>
+                <img></img>
             </images>
         </item>
 

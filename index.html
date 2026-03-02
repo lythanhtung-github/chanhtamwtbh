@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chánh Tâm w Tbh</title>
+    <title>Chánh Tâm w Tbh - Kỷ Niệm</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
@@ -29,13 +29,9 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 mt-8">
-        
         <!-- TAB 1: GALLERY -->
         <section id="gallery" class="tab-content active">
-            <!-- Grid được mở rộng lên 5 cột trên màn hình lớn -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-4" id="gallery-container">
-                <!-- Rendered by JS -->
-            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" id="gallery-container"></div>
             <div id="loader" class="py-12 text-center text-blue-400">
                 <i class="fas fa-circle-notch fa-spin text-2xl"></i>
             </div>
@@ -43,14 +39,29 @@
 
         <!-- TAB 2: TIMELINE -->
         <section id="timeline" class="tab-content">
-            <div class="max-w-3xl mx-auto relative ml-4 py-4">
+            <div class="max-w-4xl mx-auto relative ml-4 py-4">
                 <div class="timeline-line"></div>
-                <div id="timeline-container" class="space-y-12">
-                    <!-- Rendered by JS -->
-                </div>
+                <div id="timeline-container" class="space-y-12"></div>
             </div>
         </section>
     </main>
+
+    <!-- LIGHTBOX (Trình xem ảnh) -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white text-3xl"><i class="fas fa-times"></i></button>
+        <button onclick="event.stopPropagation(); prevImage()" class="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black/20 hover:bg-black/50 p-4 rounded-full transition">
+            <i class="fas fa-chevron-left text-2xl"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="Zoomed view" onclick="event.stopPropagation()">
+        <button onclick="event.stopPropagation(); nextImage()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black/20 hover:bg-black/50 p-4 rounded-full transition">
+            <i class="fas fa-chevron-right text-2xl"></i>
+        </button>
+        <div id="lightbox-caption" class="text-white mt-6 px-4 text-center">
+            <p id="caption-title" class="font-bold text-xl mb-1"></p>
+            <p id="caption-date" class="text-blue-300 text-sm mb-2"></p>
+            <p id="caption-index" class="text-xs text-gray-400 italic"></p>
+        </div>
+    </div>
 
     <!-- TRÌNH PHÁT NHẠC -->
     <div class="music-player-container">
@@ -65,205 +76,15 @@
                 <i class="fas fa-step-forward text-xs"></i>
             </button>
         </div>
-        <div class="bg-white/90 backdrop-blur shadow-md border border-blue-50 rounded-lg py-1.5 px-3 w-full">
-            <span id="track-name" class="text-[10px] font-bold text-blue-700 uppercase tracking-wider">Đang dừng</span>
+        <div class="bg-white/90 backdrop-blur shadow-md border border-blue-50 rounded-lg py-1.5 px-3 w-full overflow-hidden">
+            <span id="track-name" class="block whitespace-nowrap overflow-hidden text-ellipsis text-[10px] font-bold text-blue-700 uppercase text-center">Đang dừng</span>
         </div>
     </div>
 
     <audio id="bg-music" loop>
-        <source id="audio-source" src="./assets/music/01_NHỮNG ĐIỀU NHỎ NHOI.mp3" type="audio/mpeg">
+        <source id="audio-source" src="" type="audio/mpeg">
     </audio>
 
-    <script>
-        const CONFIG = {
-            layoutMode: "aspect-rectangle",
-            imagePath: "assets/images/",
-            galleryImages: [],
-            timelineData: []
-        };
-
-        const tracks = [
-            { name: "Những điều nhỏ nhoi", url: "./assets/music/01_NHỮNG ĐIỀU NHỎ NHOI.mp3" },
-            { name: "Người gieo mầm xanh", url: "./assets/music/02_NGƯỜI GIEO MẦM XANH.mp3" },
-        ];
-
-        let currentTrackIdx = 0;
-        let loadedIndex = 0;
-        const batchSize = 12; // Tăng số lượng ảnh mỗi lần load cho màn hình rộng
-
-        // --- EFFECT: FLOATING ICONS ---
-        function createFloatingIcons() {
-            const container = document.getElementById('floating-icons');
-            const icons = ['fa-heart', 'fa-star', 'fa-music', 'fa-cloud', 'fa-smile'];
-            const count = 25;
-
-            for (let i = 0; i < count; i++) {
-                const iconEl = document.createElement('i');
-                const iconClass = icons[Math.floor(Math.random() * icons.length)];
-                const left = Math.random() * 100;
-                const duration = 15 + Math.random() * 20;
-                const delay = Math.random() * 20;
-                const size = 10 + Math.random() * 25;
-
-                iconEl.className = `fas ${iconClass} float-icon`;
-                iconEl.style.left = `${left}%`;
-                iconEl.style.setProperty('--duration', `${duration}s`);
-                iconEl.style.setProperty('--size', `${size}px`);
-                iconEl.style.animationDelay = `${delay}s`;
-                
-                container.appendChild(iconEl);
-            }
-        }
-
-        async function loadDataFromXML() {
-            try {
-                const response = await fetch('data.xml');
-                if (!response.ok) throw new Error();
-                const str = await response.text();
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(str, "text/xml");
-
-                const galleryImgs = xmlDoc.getElementsByTagName("image");
-                for (let i = 0; i < galleryImgs.length; i++) {
-                    CONFIG.galleryImages.push(galleryImgs[i].textContent.trim());
-                }
-
-                const timelineItems = xmlDoc.getElementsByTagName("item");
-                for (let i = 0; i < timelineItems.length; i++) {
-                    const item = timelineItems[i];
-                    const imgList = Array.from(item.getElementsByTagName("img")).map(img => img.textContent.trim());
-                    CONFIG.timelineData.push({
-                        date: item.getElementsByTagName("date")[0]?.textContent || "N/A",
-                        title: item.getElementsByTagName("title")[0]?.textContent || "No Title",
-                        description: item.getElementsByTagName("description")[0]?.textContent || "",
-                        images: imgList
-                    });
-                }
-                loadGallery();
-                renderTimeline();
-            } catch (error) {
-                useFallbackData();
-            }
-        }
-
-        function useFallbackData() {
-            // Tạo 24 ảnh giả lập cho demo
-            CONFIG.galleryImages = Array.from({length: 24}, (_, i) => `img${i+1}.jpg`);
-            CONFIG.timelineData = [{
-                date: "01/01/2024",
-                title: "Welcome!",
-                description: "Vui lòng thêm file data.xml để hiển thị nội dung của bạn.",
-                images: ["demo.jpg"]
-            }];
-            loadGallery();
-            renderTimeline();
-        }
-
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(b => {
-                b.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
-                b.classList.add('text-blue-600', 'hover:bg-blue-100');
-            });
-            document.getElementById(tabName).classList.add('active');
-            const activeBtn = document.getElementById(`btn-${tabName}`);
-            activeBtn.classList.remove('text-blue-600', 'hover:bg-blue-100');
-            activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
-        }
-
-        function loadGallery() {
-            const container = document.getElementById('gallery-container');
-            if (loadedIndex >= CONFIG.galleryImages.length) {
-                document.getElementById('loader').innerHTML = "<span class='text-xs text-blue-300'>Hết ảnh rồi ✨</span>";
-                return;
-            }
-            const nextBatch = CONFIG.galleryImages.slice(loadedIndex, loadedIndex + batchSize);
-            
-            nextBatch.forEach((fileName) => {
-                const imgCard = document.createElement('div');
-                imgCard.className = `overflow-hidden rounded-2xl shadow-sm bg-white group cursor-pointer border border-blue-50 aspect-rectangle`;
-                const fullPath = CONFIG.imagePath + fileName;
-                const fallback = `/${fileName}/800/500`;
-                imgCard.innerHTML = `
-                    <img src="${fullPath}" onerror="this.onerror=null; this.src='${fallback}';"
-                         alt="${fileName}" loading="lazy"
-                         class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                `;
-                container.appendChild(imgCard);
-            });
-            loadedIndex += batchSize;
-        }
-
-        function renderTimeline() {
-            const container = document.getElementById('timeline-container');
-            container.innerHTML = ""; 
-            CONFIG.timelineData.forEach(item => {
-                const itemEl = document.createElement('div');
-                itemEl.className = "relative pl-8";
-                const imagesHTML = item.images.map(imgName => {
-                    const fallback = `/${imgName}/800/600`;
-                    return `<img src="${CONFIG.imagePath + imgName}" onerror="this.onerror=null; this.src='${fallback}';" class="object-cover rounded-xl shadow-sm hover:scale-[1.02] transition">`;
-                }).join('');
-
-                itemEl.innerHTML = `
-                    <div class="timeline-dot top-1.5"></div>
-                    <div class="flex items-center space-x-3 mb-2">
-                        <span class="text-[10px] font-bold text-blue-600 bg-blue-100 px-2 py-0.5 rounded uppercase tracking-wider">${item.date}</span>
-                        <h3 class="text-lg font-bold text-gray-800">${item.title}</h3>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-4 ml-1">${item.description}</p>
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 ml-1">
-                        ${imagesHTML}
-                    </div>
-                `;
-                container.appendChild(itemEl);
-            });
-        }
-
-        // Infinite Scroll
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting && document.getElementById('gallery').classList.contains('active')) {
-                setTimeout(loadGallery, 300);
-            }
-        }, { threshold: 0.1 });
-        observer.observe(document.getElementById('loader'));
-
-        // Music Controls
-        const audio = document.getElementById('bg-music');
-        const musicBtn = document.getElementById('music-btn');
-        const musicIcon = document.getElementById('music-icon');
-        const trackLabel = document.getElementById('track-name');
-
-        function updateTrackUI() {
-            trackLabel.innerText = tracks[currentTrackIdx].name;
-            if (!audio.paused) {
-                musicIcon.className = 'fas fa-pause text-lg';
-                musicBtn.classList.add('spinning');
-            } else {
-                musicIcon.className = 'fas fa-play text-lg ml-1';
-                musicBtn.classList.remove('spinning');
-            }
-        }
-
-        function toggleMusic() {
-            if (audio.paused) audio.play().catch(() => {});
-            else audio.pause();
-            updateTrackUI();
-        }
-
-        function changeTrack(dir) {
-            currentTrackIdx = (currentTrackIdx + dir + tracks.length) % tracks.length;
-            document.getElementById('audio-source').src = tracks[currentTrackIdx].url;
-            audio.load();
-            audio.play().catch(() => {});
-            updateTrackUI();
-        }
-
-        window.onload = () => {
-            loadDataFromXML();
-            createFloatingIcons();
-            trackLabel.innerText = tracks[currentTrackIdx].name;
-        };
-    </script>
+    <script src="./js/scripts.js"></script>
 </body>
 </html>
