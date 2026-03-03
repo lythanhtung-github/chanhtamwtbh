@@ -19,7 +19,7 @@ const tracks = [
 
 let currentTrackIdx = 0;
 let loadedIndex = 0;
-const batchSize = 15;
+const batchSize = 100;
 
 // Quản lý Lightbox
 let currentImageSet = []; 
