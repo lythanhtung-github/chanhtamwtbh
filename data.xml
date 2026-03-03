@@ -1,62 +1,197 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <!-- Danh sách ảnh hiển thị ở tab Bộ Sưu Tập -->
+    <!-- Bộ Sưu Tập -->
     <gallery>
+        <!-- PHÓNG SANH CẦU AN ĐẦU NĂM -->
         <image>/2026/20260301_3.JPG</image>
         <image>/2026/20260301_4.JPG</image>
         <image>/2026/20260301_2.JPG</image>
         <image>/2026/20260301_1.JPG</image>
+        <!-- KỴ THÂN PHỤ SƯ PHỤ 2026 -->
         <image>/2026/20260226_1.jpg</image>
-        <image>/2026/20260226_2.jpg</image>
         <image>/2026/20260226_3.jpg</image>
+        <image>/2026/20260226_2.jpg</image>
         <image>/2026/20260226_4.jpg</image>
         <image>/2026/20260226_5.jpg</image>
+        <!-- KỴ THÂN TỔ KHAI SƠN CHÙA PHƯỚC DUYÊN 2026 -->
+        <image>/2026/20260225_1.jpg</image>
+        <image>/2026/20260225_2.jpg</image>
+        <image>/2026/20260225_3.jpg</image>
+        <image>/2026/20260225_4.jpg</image>
+        <!-- CHU NIÊN CHÁNH TÂM 18 NĂM 2026 -->
+        <image>/2026/20260220_1.jpg</image>
+        <image>/2026/20260220_2.jpg</image>
+        <image>/2026/20260220_3.jpg</image>
+        <image>/2026/20260220_4.jpg</image>
+        <image>/2026/20260220_5.jpg</image>
+        <image>/2026/20260220_6.jpg</image>
+        <image>/2026/20260220_7.jpg</image>
+        <image>/2026/20260220_8.jpg</image>
+        <image>/2026/20260220_9.jpg</image>
+        <image>/2026/20260220_10.jpg</image>
+        <image>/2026/20260220_11.jpg</image>
+        <image>/2026/20260220_12.jpg</image>
+        <image>/2026/20260220_13.jpg</image>
+        <image>/2026/20260220_20.jpg</image>
+        <!-- KẾT NỐI CHÁNH TÂM -->
         <image>/2017/20170813_1.jpg</image>
         <image>/2017/20170813_2.jpg</image>
         <image>/2017/20170813_3.jpg</image>
     </gallery>
 
-    <!-- Danh sách các cột mốc ở tab Dòng Thời Gian -->
+    <!-- Dòng Thời Gian -->
     <timeline>
-
+        <!-- Phóng sanh cầu an đầu năm 2026 -->
         <item>
             <date>01/03/2026</date>
             <title>Phóng sanh cầu an đầu năm 2026</title>
             <description></description>
             <images>
-                <img>/2026/20260301_1.JPG</img>
-                <img>/2026/20260301_2.JPG</img>
                 <img>/2026/20260301_3.JPG</img>
+                <img>/2026/20260301_2.JPG</img>
+                <img>/2026/20260301_1.JPG</img>
                 <img>/2026/20260301_4.JPG</img>
             </images>
         </item>
-
+        <!-- Kỵ thân phụ Sư phụ 2026 -->
         <item>
             <date>26/02/2026</date>
-            <title>Kỵ thân phụ Sư phụ</title>
+            <title>Kỵ thân phụ Sư phụ 2026</title>
             <description>Về quê Ôn ăn kỵ</description>
             <images>
                 <img>/2026/20260226_1.jpg</img>
-                <img>/2026/20260226_2.jpg</img>
                 <img>/2026/20260226_3.jpg</img>
+                <img>/2026/20260226_2.jpg</img>
                 <img>/2026/20260226_4.jpg</img>
                 <img>/2026/20260226_5.jpg</img>
             </images>
         </item>
-
-        <!-- Sự kiện có 1 ảnh (hiển thị ảnh lớn tràn chiều rộng) -->
+        <!-- Kỵ tổ khai sơn chùa Phước Duyên 2026 -->
         <item>
-            <date>07/08/2023 - 09/08/2023</date>
-            <title>Khóa tu "Nuôi dưỡng duyên lành"</title>
-            <description>Ban kỹ thuật</description>
+            <date>25/02/2026</date>
+            <title>Kỵ tổ khai sơn chùa Phước Duyên 2026</title>
+            <description></description>
             <images>
-                <img></img>
+                <img>/2026/20260225_1.jpg</img>
+                <img>/2026/20260225_2.jpg</img>
+                <img>/2026/20260225_3.jpg</img>
+                <img>/2026/20260225_4.jpg</img>
             </images>
         </item>
-
+        <!-- Mồng 5 Tết 2026 -->
+        <item>
+            <date>21/02/2026</date>
+            <title>Mồng 5 Tết 2026</title>
+            <description>Chu niên Chánh Tâm 18 năm</description>
+            <images>
+                <img>/2026/20260220_1.jpg</img>
+                <img>/2026/20260220_2.jpg</img>
+                <img>/2026/20260220_3.jpg</img>
+                <img>/2026/20260220_4.jpg</img>
+                <img>/2026/20260220_5.jpg</img>
+                <img>/2026/20260220_6.jpg</img>
+                <img>/2026/20260220_7.jpg</img>
+                <img>/2026/20260220_8.jpg</img>
+                <img>/2026/20260220_9.jpg</img>
+                <img>/2026/20260220_10.jpg</img>
+                <img>/2026/20260220_11.jpg</img>
+                <img>/2026/20260220_12.jpg</img>
+                <img>/2026/20260220_13.jpg</img>
+                <img>/2026/20260220_20.jpg</img>
+            </images>
+        </item>
+        <!-- Mồng 2 Tết 2026 -->
+        <item>
+            <date>18/02/2026</date>
+            <title>Mồng 2 Tết 2026</title>
+            <description>Pháp thoại - Gian hàng - Thăm chúc Tết Ôn, Quý Thầy và anh/chị/em Chánh Tâm</description>
+            <images>
+            </images>
+        </item>
+        <!-- Heo sinh 08/02/2026 -->
+        <item>
+            <date>08/02/2026</date>
+            <title>Heo Sinh 2026</title>
+            <description></description>
+            <images>
+            </images>
+        </item>
+        <!-- A Lưới - Xuân Yêu Thương 2026 -->
+        <item>
+            <date>07/02/2025 - 08/02/2026</date>
+            <title>A Lưới - Xuân Yêu Thương 2026</title>
+            <description>Ban Kế Hoạch</description>
+            <images>
+            </images>
+        </item>
+        <!-- Khóa tu "Cùng Chánh Tâm 1 ngày an lạc - Kỳ 1" -->
+        <item>
+            <date>31/12/2025 - 01/01/2026</date>
+            <title>Khóa tu "Cùng Chánh Tâm 1 ngày an lạc" - Kỳ 1 2026</title>
+            <description>Ban Kế Hoạch</description>
+            <images>
+            </images>
+        </item>
+        <!-- Khóa tu "Ươm mầm 2" -->
+        <item>
+            <date>17/08/2025</date>
+            <title>Khóa tu "Ươm mầm 2" - 2025</title>
+            <description>Ban Thư Ký - Kế Hoạch</description>
+            <images>
+            </images>
+        </item>
+        <!-- Khóa tu "Quay về nương tựa" -->
+        <item>
+            <date>08/08/2024 - 10/08/2025</date>
+            <title>Khóa tu "Quay về nương tựa" - 2025</title>
+            <description>Ban Thư Ký - Kế Hoạch</description>
+            <images>
+            </images>
+        </item>
+        <!-- Khóa tu "Ươm mầm 1" -->
+        <item>
+            <date>27/07/2025</date>
+            <title>Khóa tu "Ươm mầm 1" - 2025</title>
+            <description>Ban Thư Ký - Kế Hoạch</description>
+            <images>
+            </images>
+        </item>
+        <!-- Khóa tu "Sống trọn niềm tin" -->
+        <item>
+            <date>02/08/2024 - 04/08/2024</date>
+            <title>Khóa tu "Sống trọn niềm tin" - 2024</title>
+            <description>Ban Kế Hoạch</description>
+            <images>
+            </images>
+        </item>
+        <!-- Khóa tu "Ươm mầm 2" -->
+        <item>
+            <date>14/07/2024</date>
+            <title>Khóa tu "Ươm mầm 2" - 2024</title>
+            <description>Ban Kế Hoạch</description>
+            <images>
+            </images>
+        </item>
+        <!-- Khóa tu "Ươm mầm 1" -->
+        <item>
+            <date>07/07/2024</date>
+            <title>Khóa tu "Ươm mầm 1" - 2024</title>
+            <description>Ban Kế Hoạch</description>
+            <images>
+            </images>
+        </item>
+        <!-- Khóa tu "Nuôi dưỡng duyên lành" -->
+        <item>
+            <date>07/08/2023 - 09/08/2023</date>
+            <title>Khóa tu "Nuôi dưỡng duyên lành" - 2023</title>
+            <description>Ban Kỹ Thuật, Ban Hậu Cần</description>
+            <images>
+            </images>
+        </item>
+        <!-- Kết nối Chánh Tâm -->
         <item>
             <date>13/08/2017</date>
-            <title>Kết nối Chánh Tâm</title>
+            <title>Kết nối Chánh Tâm - 2017</title>
             <description>Bạn ơi hãy đến đây. Cùng nhau tay nắm tay. Duyên lành cùng nuôi dưỡng. Chánh Tâm nguyện đắp xây</description>
             <images>
                 <img>/2017/20170813_1.jpg</img>
